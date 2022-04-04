@@ -1,0 +1,32 @@
+Package: PLEIOVAR
+Type: Package
+Title: Determine The Significance Of SNPs in GWAS Studies
+Version: 0.1.0
+Authors@R: c(
+    person("Osorio", "Meirelles", email = "osorio.meirelles@nih.gov", role = "aut"),
+    person("David", "Li", email = "zhiguang.li@nih.gov", role = c("aut", "cre")),
+    person("Kathryn", "Tsai", email = "tsaikc@mail.nih.gov", role = "aut"),
+    person("Jun", "Ding", email = "jun.ding@nih.gov", role = "aut"),
+    person("Yong", "Qian", email = "qiany@grc.nia.nih.gov", role = "aut"),
+    person("Lenore", "Launer", email = "LaunerL@nia.nih.gov", role = "aut")
+    )
+Maintainer: David Li <zhiguang.li@nih.gov>
+Description: From the genotype data of participants in a population study, determine which SNPs are significantly associated with a phenotype using Osorio's approach.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    dplyr,
+    fs,
+    magrittr,
+    readr,
+    rlang,
+    stats,
+    stringr,
+    utils
+Depends: 
+    R (>= 2.10)

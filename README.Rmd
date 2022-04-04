@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# PLEIOVAR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of PLEIOVAR is to ...
+
+## Installation
+
+You can install the development version of PLEIOVAR from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("LEPSNES/PLEIOVAR")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+### PC-SNP
+
+This is one step of PLEIOVAR pipeline to generate genewise principle components. 
+
+```{r example}
+library(PLEIOVAR)
+infolder <- system.file("extdata", "pc_snp", package = "PLEIOVAR")
+outfolder <- "dev/func_output"
+OPF_snp <-  0.75
+freq_cut <-  0.005
+block_name <-  "blocktest"
+pc_snp(infolder, outfolder, OPF_snp, freq_cut, block_name)
+```
+
+To get help
+
+```{r}
+?pc_snp
+```
