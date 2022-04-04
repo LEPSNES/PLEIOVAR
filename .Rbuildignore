@@ -1,0 +1,10 @@
+^renv$
+^renv\.lock$
+^.*\.Rproj$
+^\.Rproj\.user$
+^Rmd$
+^readyRemove$
+^LICENSE\.md$
+^README\.Rmd$
+^data-raw$
+^dev$
