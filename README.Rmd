@@ -27,6 +27,10 @@ You can install the development version of PLEIOVAR from [GitHub](https://github
 ``` r
 # install.packages("devtools")
 devtools::install_github("LEPSNES/PLEIOVAR")
+=======
+You can install the development version of PLEIOVAR like so:
+
+``` r
 ```
 
 ## Example
