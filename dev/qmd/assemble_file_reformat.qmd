@@ -1,0 +1,202 @@
+---
+title: "assemble file reformat"
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-pkgs
+#| code-summary: "Packages"
+#| message: false
+
+pacman::p_load(
+  tidyverse,
+  fs,
+  furrr,
+  tictoc
+)
+
+
+```
+
+## Parameters
+
+```{r}
+assembled_dir_one_chrom <- "../../assembled/variants_by_gene/chrom_tst/vcf_output/"
+assembled_dir <- "../../assembled/variants_by_gene/"
+```
+
+## Reformat files
+
+-   Get file list
+
+```{r}
+fl <- 
+assembled_dir_one_chrom |> 
+  dir_ls() |> 
+  enframe() |> 
+  mutate(
+    name = NULL,
+    order = 1:n()
+  )  |> 
+  relocate(order, .before = 1) |> 
+  mutate(
+    gene = str_extract(path_file(value), "[^.]+")
+  )
+
+
+```
+
+-   Unite three files into one
+
+-   Define a function to process three files of one gene
+
+```{r}
+
+
+unite_three_files_of_one_gene <- function(
+    assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_21",
+    gene = "ABCC13"
+    ) {
+  # browser()
+  # Get variant position
+  posi <-
+    read_tsv(
+      file = path(assembled_dir_one_chrom, gene, ext = "012.pos"),
+      col_names = c("chrom", "posi"),
+      col_types = cols(
+        .default = col_integer()
+      )
+    )
+
+  if (nrow(posi) > 0) { # The gene has > 0 SNPs
+    # Get individual ID
+    indv <-
+      read_tsv(
+        file = path(assembled_dir_one_chrom, gene, ext = "012.indv"),
+        col_names = c("id"),
+        col_types = cols(
+          .default = col_integer()
+        )
+      )
+    # Read in variant data with column name as variant position
+    # Attach individual ID
+    d <-
+      read_tsv(
+        file = path(assembled_dir_one_chrom, gene, ext = "012"),
+        col_names = c("order", as.character(posi$posi)),
+        col_select = -1, # Remove the first "order" column
+        col_types = cols(
+          .default = col_integer()
+        )
+      ) |>
+      mutate( # Add inidividual id as the first column
+        id = indv$id,
+        .before = 1
+      )
+
+    # Save as rds
+    # rds_out_dir = path(assembled_dir_one_chrom, "rds")
+    rds_out_dir <-
+      assembled_dir_one_chrom |> 
+      path_dir() |> 
+      path("rds")
+    if (!dir_exists(rds_out_dir)) dir_create(rds_out_dir)
+    write_rds(d, file = path(rds_out_dir, gene, ext = "rds"))
+  }
+}
+
+
+
+```
+
+-   Test function
+
+```{r}
+
+unite_three_files_of_one_gene(
+  assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_tst/vcf_output",
+  gene = "ABCC13"
+  # gene = "MIR155"
+  # rds_out_dir = path(assembled_dir_one_chrom, "rds")
+)
+
+```
+
+-   Cycle through all the genes for one chrom
+
+```{r}
+fl |> 
+  count(gene) |> 
+  slice_head(n=30) |> 
+  pluck("gene") |> 
+  walk(
+    ~ unite_three_files_from_one_gene(
+      assembled_dir_one_chrom = assembled_dir_one_chrom,
+      gene = .x
+    )
+  )
+```
+
+-   Define the function to cycle through genes of one chrom
+
+```{r}
+
+cycle_through_genes_one_chrom <- function(assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_tst/vcf_output") {
+  assembled_dir_one_chrom |>
+    dir_ls(glob = "*012*") |>
+    map_chr(~ str_extract(path_file(.x), "[^.]+")) |>
+    unique() |>
+    # head(n=60) |>
+    future_walk(
+      ~ unite_three_files_of_one_gene(
+        assembled_dir_one_chrom = assembled_dir_one_chrom,
+        gene = .x
+      )
+    )
+}
+
+
+
+
+  
+```
+
+-   Check the funciton
+
+```{r}
+
+tic("multisession")
+# plan(multicore, workers = 60)
+plan(multisession, workers = 12)
+cycle_through_genes_one_chrom(
+  assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_tst/vcf_output"
+)
+
+plan(sequential)
+toc()
+
+```
+
+-   Cycle through all chroms
+
+```{r}
+tic("Two tst chrom")
+plan(multisession, workers = 72)
+dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |> 
+# dir_ls(assembled_dir, regexp = ".*chrom_tst.*") |> 
+  path("vcf_output") |> 
+  map(cycle_through_genes_one_chrom)
+
+plan(sequential)
+toc()
+
+
+```
