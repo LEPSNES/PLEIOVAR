@@ -30,6 +30,7 @@ pacman::p_load(
 
 ```{r}
 assembled_dir_one_chrom <- "../../assembled/variants_by_gene/chrom_tst/vcf_output/"
+assembled_dir_one_chrom <- "../assembled/variants_by_gene/chrom_11/vcf_output/"
 assembled_dir <- "../../assembled/variants_by_gene/"
 ```
 
@@ -48,9 +49,11 @@ assembled_dir_one_chrom |>
   )  |> 
   relocate(order, .before = 1) |> 
   mutate(
-    gene = str_extract(path_file(value), "[^.]+")
+    # gene = str_extract(path_file(value), "[^.]+")
+    gene = str_remove(path_file(value), ".012$|.012.indv$|.012.pos$")
   )
 
+fl |> filter(str_detect(value, "CAND"))
 
 ```
 

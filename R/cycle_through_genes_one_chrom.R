@@ -46,7 +46,8 @@
 cycle_through_genes_one_chrom <- function(assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_tst/vcf_output") {
   assembled_dir_one_chrom |>
     fs::dir_ls(glob = "*012*") |>
-    purrr::map_chr(~ str_extract(path_file(.x), "[^.]+")) |>
+    # purrr::map_chr(~ str_extract(path_file(.x), "[^.]+")) |>
+    purrr::map_chr(~ stringr::str_remove(fs::path_file(.x), ".012$|.012.indv$|.012.pos$")) |>
     unique() |>
     # head(n=60) |>
     furrr::future_walk(
