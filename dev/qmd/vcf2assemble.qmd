@@ -1,0 +1,53 @@
+---
+title: "From vcf file to assembled file"
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-pkgs
+#| code-summary: "Packages"
+#| message: false
+
+pacman::p_load( tidyverse, fs, tictoc, processx)
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+
+run(
+  command = "zsh",
+  args = c(
+  "/home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/dev/sh/pull_variants_by_gene_from_vcf_v2.sh", "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf",  "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/gene",   "~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout", "1>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/pull_by_gene.log", "2>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/vcftools_output.log"
+  )
+)
+```
+
+```{r}
+system2("ls", "-la")
+```
+
+```{r}
+
+system2(
+  command = "zsh",
+  args = c(
+  "~/project/PLEIOVAR/PLEIOVAR_rpkg/dev/sh/pull_variants_by_gene_from_vcf_v2.sh", 
+  "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf",  
+  "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/gene",   
+  "~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout", 
+  "1>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/pull_by_gene.log", 
+  "2>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/vcftools_output.log"
+  )
+)
+
+```
