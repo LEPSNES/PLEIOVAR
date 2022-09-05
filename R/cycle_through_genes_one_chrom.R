@@ -15,10 +15,7 @@
 #'
 #' # Process one chrom
 #' tic("One tst chrom")
-#' # d <- path_package("PLEIOVAR") |>
-#' #   path_dir() |>
-#' #   path("../assembled/variants_by_gene/chrom_tst/vcf_output")
-#' d <- "~/project/PLEIOVAR/assembled/variants_by_gene/chrom_tst/vcf_output"
+#' d <- "tmpout/chrom_20/vcf_output"
 #' plan(multisession, workers = 12)
 #' cycle_through_genes_one_chrom(
 #'   assembled_dir_one_chrom = d
@@ -27,29 +24,31 @@
 #' toc()
 #'
 #' # Process multiple chroms
-#' tic("Two tst chrom")
-#' # assembled_dir <- path_package("PLEIOVAR") |>
-#' #   path_dir() |>
-#' #   path("../assembled/variants_by_gene")
-#' assembled_dir <- "~/project/PLEIOVAR/assembled/variants_by_gene"
+#' tic("Multiple chroms")
+#' assembled_dir <- "tmpout"
 #' plan(multisession, workers = 72)
-#' # dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>  # Uncomment this line to process chrom 1 through 22
-#' dir_ls(assembled_dir, regexp = ".*chrom_tst.*") |>
+#' dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>
 #'   path("vcf_output") |>
-#'   map(cycle_through_genes_one_chrom)
+#'     walk(function(chrom) {
+#'       tic(chrom)
+#'       cycle_through_genes_one_chrom(chrom)
+#'       toc()
+#'      })
 #'
 #' plan(sequential)
 #' toc()
 #'
 #'
 #'
-cycle_through_genes_one_chrom <- function(assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_tst/vcf_output") {
+cycle_through_genes_one_chrom <- function(assembled_dir_one_chrom = "tmpout/chrom_20/vcf_output") {
   assembled_dir_one_chrom |>
+    # Get the list of files with "012" in the name
     fs::dir_ls(glob = "*012*") |>
+    # Get gene name
     # purrr::map_chr(~ str_extract(path_file(.x), "[^.]+")) |>
     purrr::map_chr(~ stringr::str_remove(fs::path_file(.x), ".012$|.012.indv$|.012.pos$")) |>
+    # Get uniqe genes, since each gene has three files
     unique() |>
-    # head(n=60) |>
     furrr::future_walk(
       ~ PLEIOVAR::unite_three_vcf_output_files_of_one_gene(
         assembled_dir_one_chrom = assembled_dir_one_chrom,

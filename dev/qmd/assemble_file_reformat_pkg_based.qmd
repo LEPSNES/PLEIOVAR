@@ -26,9 +26,12 @@ Use PLEIOVAR package to reformat vcftools output.
 
 ```{r}
 assembled_dir <- "~/project/PLEIOVAR/assembled/variants_by_gene"
+assembled_dir <- "tmpout"
+
 ```
 
 ```{r}
+toc()
 plan(multisession, workers = 72)
 dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>  # Uncomment this line to process chrom 1 through 22
 # dir_ls(assembled_dir, regexp = ".*chrom_tst.*") |>

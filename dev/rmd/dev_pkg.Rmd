@@ -1,0 +1,104 @@
+---
+title: "Metabolic Disease"
+output:
+  html_document:
+    df_print: paged
+    number_sections: TRUE
+    toc: TRUE
+    # toc_float: TRUE
+    code_folding: hide
+    code_download: TRUE
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, error = FALSE, message = FALSE, fig.width = 10, fig.height = 10)
+pacman::p_load(tidyverse, devtools, fs, pacman, tictoc, furrr)
+options(DT.options = list(pageLength = 5, scrollX=TRUE))
+```
+
+
+```{r}
+options()
+options(readr.show_col_types = FALSE)
+```
+
+
+```{r}
+use_r("strsplit1")
+use_r("pc_snp")
+use_r("vcf2assemble")
+use_r("pc_snp_one_gene")
+use_r("pc_snp_one_chrom")
+```
+
+```{r}
+load_all()
+exists("strsplit1", where = globalenv(), inherits = FALSE)
+exists("strsplit1", where = globalenv(), inherits = TRUE)
+```
+
+```{r}
+(x <- "alfa,bravo,charlie,delta")
+strsplit1(x, split = ",")
+```
+
+```{r}
+check()
+```
+
+```{r}
+use_mit_license()
+document()
+?strsplit1
+```
+```{r}
+install()
+library(PLEIOVAR)
+```
+
+```{r}
+use_testthat()
+use_test("strsplit1")
+test()
+```
+
+
+```{r}
+use_package("stringr")
+use_package("magrittr", "rlang", "dplyr", "stats")
+use_package("readr")
+use_package("utils")
+usethis::use_pipe()
+rename_files("strsplit1", "str_split_one")
+```
+
+
+```{r}
+use_readme_rmd()
+build_readme()
+```
+
+
+```{r}
+Y[, c(TRUE, VarSnps >= VARCUT)]
+sum(round(cumsum(lambda)/sum(lambda), 4) == round(OPFcum_s,4))
+```
+
+## data
+
+```{r}
+x <- sample(1000)
+usethis::use_data(x, mtcars)
+```
+
+```{r}
+x <- sample(1000)
+usethis::use_data(x, mtcars, internal = TRUE)
+```
+```{r}
+use_data_raw("pc_snp")
+```
+
+

@@ -36,17 +36,37 @@ run(
 system2("ls", "-la")
 ```
 
+Get the paths after PLEIOVAR package installation
+
+```{r}
+
+shell_script <- path_package("PLEIOVAR", "shellscript", "pull_variants_by_gene_from_vcf_v2.sh")
+
+vcf_dir <- path_package("PLEIOVAR", "extdata", "vcf")
+
+gene_dir <- path_package("PLEIOVAR", "extdata", "gene")
+
+```
+
+Pull variants by gene from vcf files
+
 ```{r}
 
 system2(
   command = "zsh",
   args = c(
-  "~/project/PLEIOVAR/PLEIOVAR_rpkg/dev/sh/pull_variants_by_gene_from_vcf_v2.sh", 
-  "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf",  
-  "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/gene",   
-  "~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout", 
-  "1>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/pull_by_gene.log", 
-  "2>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/vcftools_output.log"
+  # "~/project/PLEIOVAR/PLEIOVAR_rpkg/dev/sh/pull_variants_by_gene_from_vcf_v2.sh", 
+    pull_variants_script,
+  #"~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf",  
+    vcf_dir,
+  # "~/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/gene",   
+    gene_dir,
+  #"~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout", 
+    "tmpout",
+  #"1>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/pull_by_gene.log", 
+    "1>tmpout/pull_by_gene.log", 
+  #"2>~/project/PLEIOVAR/PLEIOVAR_rpkg/tmpout/vcftools_output.log"
+    "2>tmpout/vcftools_output.log"
   )
 )
 

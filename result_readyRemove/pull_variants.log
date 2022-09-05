@@ -1,0 +1,40 @@
+start chrom22: 2022-09-05 13:23:37
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_22.bed
+out dir: result/chrom_22/vcftools_output
+start chrom20: 2022-09-05 13:24:17
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_20.bed
+out dir: result/chrom_20/vcftools_output
+start chrom21: 2022-09-05 13:24:17
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_21.bed
+out dir: result/chrom_21/vcftools_output
+start chrom22: 2022-09-05 13:24:17
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_22.bed
+out dir: result/chrom_22/vcftools_output
+start chrom20: 2022-09-05 13:28:39
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_20.bed
+out dir: result/chrom_20/vcftools_output
+start chrom21: 2022-09-05 13:28:40
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_21.bed
+out dir: result/chrom_21/vcftools_output
+start chrom22: 2022-09-05 13:28:40
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_22.bed
+out dir: result/chrom_22/vcftools_output
+start chrom20: 2022-09-05 13:29:03
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_20.bed
+out dir: result/chrom_20/vcftools_output
+start chrom21: 2022-09-05 13:29:04
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_21.bed
+out dir: result/chrom_21/vcftools_output
+start chrom22: 2022-09-05 13:29:04
+vcf file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+gene file: /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/renv/library/R-4.2/x86_64-pc-linux-gnu/PLEIOVAR/extdata/gene/chrom_22.bed
+out dir: result/chrom_22/vcftools_output

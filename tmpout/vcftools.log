@@ -1,0 +1,1599 @@
+/home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/shellscript/pull_variants_by_gene_from_vcf_v2.sh:ulimit:19: value exceeds hard limit
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 101355
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_2
+	--remove-filtered-all
+	--from-bp 93684
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 35 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 126149
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_3
+	--remove-filtered-all
+	--from-bp 110761
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 38 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 139154
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_4
+	--remove-filtered-all
+	--from-bp 134136
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 40 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 154322
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_5
+	--remove-filtered-all
+	--from-bp 147745
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 40 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 162697
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_6
+	--remove-filtered-all
+	--from-bp 157272
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 42 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 174607
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_7
+	--remove-filtered-all
+	--from-bp 168241
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 33 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 223194
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_10
+	--remove-filtered-all
+	--from-bp 219286
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 49 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 193092
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_8
+	--remove-filtered-all
+	--from-bp 183222
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 34 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 212528
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_9
+	--remove-filtered-all
+	--from-bp 204093
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 39 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 232739
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_11
+	--remove-filtered-all
+	--from-bp 228206
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 45 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 244333
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_12
+	--remove-filtered-all
+	--from-bp 238540
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 44 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 258748
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_13
+	--remove-filtered-all
+	--from-bp 253854
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 49 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 269703
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_14
+	--remove-filtered-all
+	--from-bp 264052
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 44 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 302382
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_16
+	--remove-filtered-all
+	--from-bp 293240
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 40 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 287179
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_15
+	--remove-filtered-all
+	--from-bp 280915
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 44 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 348775
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_19
+	--remove-filtered-all
+	--from-bp 344079
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 42 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 384503
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_22
+	--remove-filtered-all
+	--from-bp 377979
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 45 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 438953
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_25
+	--remove-filtered-all
+	--from-bp 429722
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 37 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 418118
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_24
+	--remove-filtered-all
+	--from-bp 407059
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 41 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 370801
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_21
+	--remove-filtered-all
+	--from-bp 363729
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 37 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 319050
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_17
+	--remove-filtered-all
+	--from-bp 313876
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 28 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 337286
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_18
+	--remove-filtered-all
+	--from-bp 326919
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 42 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 357828
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_20
+	--remove-filtered-all
+	--from-bp 353697
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 40 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 399226
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_23
+	--remove-filtered-all
+	--from-bp 392127
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 46 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 459306
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_26
+	--remove-filtered-all
+	--from-bp 450375
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 39 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 486810
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_27
+	--remove-filtered-all
+	--from-bp 476285
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 41 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 506607
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_28
+	--remove-filtered-all
+	--from-bp 498140
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 34 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 531455
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_29
+	--remove-filtered-all
+	--from-bp 520471
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 27 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+	--chr 20
+	--to-bp 544040
+	--012
+	--out tmpout/chrom_20/vcf_output/gene_20_30
+	--remove-filtered-all
+	--from-bp 537678
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 42 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10883662
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_2
+	--remove-filtered-all
+	--from-bp 10878053
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 2 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10898038
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_3
+	--remove-filtered-all
+	--from-bp 10890023
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10911677
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_4
+	--remove-filtered-all
+	--from-bp 10904951
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 2 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10926924
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_5
+	--remove-filtered-all
+	--from-bp 10918703
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 1 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10943696
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_6
+	--remove-filtered-all
+	--from-bp 10935728
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10960049
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_7
+	--remove-filtered-all
+	--from-bp 10950631
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10977782
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_8
+	--remove-filtered-all
+	--from-bp 10967996
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 11026722
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_10
+	--remove-filtered-all
+	--from-bp 10999670
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 10993625
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_9
+	--remove-filtered-all
+	--from-bp 10986454
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14357997
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_15
+	--remove-filtered-all
+	--from-bp 14353831
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 11098573
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_11
+	--remove-filtered-all
+	--from-bp 11069173
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14342515
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_13
+	--remove-filtered-all
+	--from-bp 14340127
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14349395
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_14
+	--remove-filtered-all
+	--from-bp 14345640
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 11171787
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_12
+	--remove-filtered-all
+	--from-bp 11129313
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14372186
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_17
+	--remove-filtered-all
+	--from-bp 14367742
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14381692
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_18
+	--remove-filtered-all
+	--from-bp 14375551
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14364138
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_16
+	--remove-filtered-all
+	--from-bp 14361326
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14393936
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_19
+	--remove-filtered-all
+	--from-bp 14386791
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14407744
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_20
+	--remove-filtered-all
+	--from-bp 14401003
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14424153
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_21
+	--remove-filtered-all
+	--from-bp 14414232
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14436154
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_22
+	--remove-filtered-all
+	--from-bp 14430215
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14459300
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_24
+	--remove-filtered-all
+	--from-bp 14450850
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 6 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14445521
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_23
+	--remove-filtered-all
+	--from-bp 14441122
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14486031
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_25
+	--remove-filtered-all
+	--from-bp 14474056
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 8 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14509696
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_26
+	--remove-filtered-all
+	--from-bp 14499286
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 1 out of a possible 2993 Sites
+Run Time = 1.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14574249
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_28
+	--remove-filtered-all
+	--from-bp 14550024
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 6 out of a possible 2993 Sites
+Run Time = 1.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14597292
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_29
+	--remove-filtered-all
+	--from-bp 14591774
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 8 out of a possible 2993 Sites
+Run Time = 1.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14533311
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_27
+	--remove-filtered-all
+	--from-bp 14523392
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 8 out of a possible 2993 Sites
+Run Time = 1.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+	--chr 21
+	--to-bp 14612284
+	--012
+	--out tmpout/chrom_21/vcf_output/gene_21_30
+	--remove-filtered-all
+	--from-bp 14604323
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 20 out of a possible 2993 Sites
+Run Time = 1.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16553134
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_2
+	--remove-filtered-all
+	--from-bp 16537769
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16583779
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_3
+	--remove-filtered-all
+	--from-bp 16566312
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16607244
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_4
+	--remove-filtered-all
+	--from-bp 16594893
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16641298
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_5
+	--remove-filtered-all
+	--from-bp 16620700
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16665073
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_6
+	--remove-filtered-all
+	--from-bp 16648658
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16849738
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_7
+	--remove-filtered-all
+	--from-bp 16695855
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 5 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16857660
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_9
+	--remove-filtered-all
+	--from-bp 16855280
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 26 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16862088
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_10
+	--remove-filtered-all
+	--from-bp 16860139
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 26 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16870851
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_11
+	--remove-filtered-all
+	--from-bp 16866285
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 1 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16905468
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_15
+	--remove-filtered-all
+	--from-bp 16899946
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16922318
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_16
+	--remove-filtered-all
+	--from-bp 16914627
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16886974
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_13
+	--remove-filtered-all
+	--from-bp 16882275
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16853231
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_8
+	--remove-filtered-all
+	--from-bp 16851640
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 20 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16895246
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_14
+	--remove-filtered-all
+	--from-bp 16891989
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16877135
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_12
+	--remove-filtered-all
+	--from-bp 16873401
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16934854
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_17
+	--remove-filtered-all
+	--from-bp 16930611
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16947183
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_18
+	--remove-filtered-all
+	--from-bp 16939256
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 16958573
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_19
+	--remove-filtered-all
+	--from-bp 16952503
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 0 out of a possible 2993 Sites
+No data left for analysis!
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17012057
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_20
+	--remove-filtered-all
+	--from-bp 17005015
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 3 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17026121
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_21
+	--remove-filtered-all
+	--from-bp 17019728
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 16 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17060684
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_23
+	--remove-filtered-all
+	--from-bp 17051419
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 31 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17037779
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_22
+	--remove-filtered-all
+	--from-bp 17033618
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 15 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17148316
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_28
+	--remove-filtered-all
+	--from-bp 17139672
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 32 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17095509
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_25
+	--remove-filtered-all
+	--from-bp 17089326
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 25 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17079417
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_24
+	--remove-filtered-all
+	--from-bp 17069064
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 30 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17113826
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_26
+	--remove-filtered-all
+	--from-bp 17104976
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 25 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17130142
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_27
+	--remove-filtered-all
+	--from-bp 17122884
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 33 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17208423
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_29
+	--remove-filtered-all
+	--from-bp 17178684
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 31 out of a possible 2993 Sites
+Run Time = 0.00 seconds
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/inst/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+	--chr 22
+	--to-bp 17227182
+	--012
+	--out tmpout/chrom_22/vcf_output/gene_22_30
+	--remove-filtered-all
+	--from-bp 17220864
+
+Using zlib version: 1.2.11
+After filtering, kept 101 out of 101 Individuals
+Writing 012 matrix files ... Done.
+After filtering, kept 33 out of a possible 2993 Sites
+Run Time = 0.00 seconds

@@ -5,7 +5,7 @@
 \title{Process genes in one chrom}
 \usage{
 cycle_through_genes_one_chrom(
-  assembled_dir_one_chrom = "../../assembled/variants_by_gene/chrom_tst/vcf_output"
+  assembled_dir_one_chrom = "tmpout/chrom_20/vcf_output"
 )
 }
 \arguments{
@@ -22,10 +22,7 @@ unite_three_vcf_output_files_of_one_gene().
 
 # Process one chrom
 tic("One tst chrom")
-# d <- path_package("PLEIOVAR") |>
-#   path_dir() |>
-#   path("../assembled/variants_by_gene/chrom_tst/vcf_output")
-d <- "~/project/PLEIOVAR/assembled/variants_by_gene/chrom_tst/vcf_output"
+d <- "tmpout/chrom_20/vcf_output"
 plan(multisession, workers = 12)
 cycle_through_genes_one_chrom(
   assembled_dir_one_chrom = d
@@ -34,16 +31,16 @@ plan(sequential)
 toc()
 
 # Process multiple chroms
-tic("Two tst chrom")
-# assembled_dir <- path_package("PLEIOVAR") |>
-#   path_dir() |>
-#   path("../assembled/variants_by_gene")
-assembled_dir <- "~/project/PLEIOVAR/assembled/variants_by_gene"
+tic("Multiple chroms")
+assembled_dir <- "tmpout"
 plan(multisession, workers = 72)
-# dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>  # Uncomment this line to process chrom 1 through 22
-dir_ls(assembled_dir, regexp = ".*chrom_tst.*") |>
+dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>
   path("vcf_output") |>
-  map(cycle_through_genes_one_chrom)
+    walk(function(chrom) {
+      tic(chrom)
+      cycle_through_genes_one_chrom(chrom)
+      toc()
+     })
 
 plan(sequential)
 toc()

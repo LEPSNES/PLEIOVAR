@@ -16,13 +16,7 @@ editor_options:
 #| code-summary: "Packages"
 #| message: false
 
-pacman::p_load(
-  tidyverse,
-  fs,
-  furrr,
-  tictoc
-)
-
+pacman::p_load(tidyverse, fs, furrr,  tictoc)
 
 ```
 
@@ -191,12 +185,18 @@ toc()
 -   Cycle through all chroms
 
 ```{r}
-tic("Two tst chrom")
+tic("Multipe chroms")
+assembled_dir <- "tmpout"
 plan(multisession, workers = 72)
-dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |> 
-# dir_ls(assembled_dir, regexp = ".*chrom_tst.*") |> 
-  path("vcf_output") |> 
-  map(cycle_through_genes_one_chrom)
+dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>
+  # dir_ls(assembled_dir, regexp = ".*chrom_tst.*") |>
+  path("vcf_output") |>
+  # map(cycle_through_genes_one_chrom)
+  walk(function(chrom) {
+    tic(chrom)
+    cycle_through_genes_one_chrom(chrom)
+    toc()
+  })
 
 plan(sequential)
 toc()

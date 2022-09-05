@@ -1,0 +1,568 @@
+---
+title: "Develope pc_snp function"
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-pkgs
+#| code-summary: "Packages"
+#| message: false
+
+pacman::p_load(tidyverse, fs, furrr,  tictoc, broom, devtools)
+
+```
+
+
+
+```{r}
+tidy(pr, matrix = "scores")
+tidy(pr, matrix = "rotation")
+tidy(pr, matrix = "eigenvalues")
+```
+
+
+Read in SNPfile
+
+```{r}
+freq_cut <-  0.005
+VARCUT <- 2 * freq_cut * (1 - freq_cut)
+SNPfile <- "inst/extdata/pc_snp/Assemble/gene1_assembled"
+# 1st column is individal ID, the other columns are SNP genotype
+X <- readr::read_table(SNPfile, show_col_types = FALSE)
+X[1:6, 1:7]
+
+# Convert ID to rownames
+X <- column_to_rownames(X, var = "ID") #|> 
+  as.matrix()
+
+```
+
+Filter by variance
+
+```{r}
+# eliminate the SNPs that did not meet the variance threshold
+# VarSnps_select <- X %>%
+#   dplyr::summarise(dplyr::across(-ID, ~ var(.) > VARCUT)) %>%
+#   rlang::flatten_lgl()
+# X <- X[, c(TRUE, VarSnps_select)]
+
+X_varcut <- 
+X[1:6, 1:7] |> 
+  select(where(~ var(.x) > VARCUT))
+
+```
+
+run PCA
+
+```{r}
+# Add noise
+noise <- matrix(stats::runif(nrow(X) * (ncol(X) - 1), -0.0001, 0.0001), nrow(X), ncol(X) - 1)
+pr <- stats::prcomp(X[, -1] + noise)
+# Using jitter to add noise
+pr <- 
+  X_varcut |>           # A data frame
+  as.matrix() |>        # Convert to matrix
+  jitter() |>           # Add noise
+  prcomp()              # Run PCA
+
+
+```
+
+Eigenevalues, corresponding to lambda and OFPcum_s in Osorio's code.
+
+```{r}
+OPF_snp <- 0.75
+eigenvalue_selected <- 
+tidy(pr, matrix = "eigenvalues") |> 
+  # Simply filter by cumulative <= OPF_snp seems not ok since according to Osorio's code
+  # the one row with smallest cumulative value larger than OPF_snp is kept.
+  # Need to further confirm with Osorio
+  filter(lag(cumulative <= OPF_snp, default = TRUE)) |> 
+  mutate(lambda = std.dev^2)
+  # mutate(mark=cumulative < OPF_snp) |> 
+  # filter(lag(mark, default = TRUE))
+
+eigenvalue_selected
+```
+
+Loadings, rotation, eigenvectors
+
+```{r}
+loadings <-
+  tidy(pr, matrix = "rotation") |>
+  filter(PC <= nrow(eigenvalue_selected)) |>
+  rename(
+    SNP_ID = column,
+    loading = value
+  )
+loadings
+```
+
+OSNP,  score, the location of the observation in PCA space.
+
+```{r}
+tidy(pr, matrix = "scores") |> 
+  filter(PC <= nrow(eigenvalue_selected)) |>
+  rename(
+    Individal_ID = row,
+    score = value
+  )
+
+```
+
+############################################################################
+## Function preparation Step 2
+############################################################################
+
+Block file, gene bed file
+
+```{r}
+# Based on Osorio's code
+# AA is the block file
+infile <- "inst/extdata/pc_snp/Regions/blocktest"
+AA <- readr::read_delim(infile, col_names = FALSE, show_col_types=FALSE) %>%
+    rlang::set_names(c("chr", "start", "end", "gene"))
+
+assembled_dir <- "inst/extdata/pc_snp/Assemble"
+
+AA |> 
+  filter(
+    file_exists(
+      path(assembled_dir, str_c(gene, "_assembled"))
+    )
+  )
+
+# Package oriented
+gene_bed_path <- fs::path_package("PLEIOVAR", "extdata", "gene", "chrom_20.bed")
+gene_bed <- readr::read_delim(gene_bed_path, col_names = FALSE, show_col_types=FALSE) %>%
+    rlang::set_names(c("chr", "start", "end", "gene"))
+
+assembled_dir <- "tmpout/chrom_20/rds"
+# The genes whose assembled file exist
+gene_bed_exist <-
+  gene_bed |>
+  filter(file_exists(path(assembled_dir, gene, ext = "rds")))
+
+```
+
+Read in genotype data (X), filter by variance
+
+```{r}
+
+
+X_varcut <-
+  readr::read_rds(path(assembled_dir, gene_bed_exist$gene[1], ext = "rds")) |>   # Read in genotype for a gene
+  mutate(id = 1:n()) |>                              # Fill id column, the original values are all NA-- need to check
+  column_to_rownames(var = "id") |>                # Turn "id" column to row name
+  select(where( ~ var(.x) > VARCUT))                # Select by variance
+
+
+glimpse(X_varcut)
+```
+
+run PCA
+
+```{r}
+
+# Using jitter to add noise
+pr <- 
+  X_varcut |>           # A data frame
+  as.matrix() |>        # Convert to matrix
+  jitter() |>           # Add noise
+  prcomp()              # Run PCA
+
+```
+
+Generate out data
+
+Initialize the out list
+
+```{r}
+out <- list()
+
+pc_snp_dir <- "tmpout/chrom_20/pc_snp"
+out$eigenvalue$path <- path(pc_snp_dir, "eigenvalue", gene_bed_exist$gene[1])
+out$loading$path <- path(pc_snp_dir, "loading", gene_bed_exist$gene[1])
+out$score$path <- path(pc_snp_dir, "score", gene_bed_exist$gene[1])
+
+```
+
+Eigenevalues, corresponding to lambda and OFPcum_s in Osorio's code.
+
+```{r}
+OPF_snp <- 0.75
+out$eigenvalue$data <- 
+tidy(pr, matrix = "eigenvalues") |> 
+  # Simply filter by cumulative <= OPF_snp seems not ok since according to Osorio's code
+  # the one row with smallest cumulative value larger than OPF_snp is kept.
+  # Need to further confirm with Osorio
+  filter(lag(cumulative <= OPF_snp, default = TRUE)) |> 
+  mutate(lambda = std.dev^2)
+  # mutate(mark=cumulative < OPF_snp) |> 
+  # filter(lag(mark, default = TRUE))
+
+out$eigenvalue$data
+```
+
+Loading, rotation, eigenvector
+
+```{r}
+out$loading$data <-
+  tidy(pr, matrix = "rotation") |>
+  filter(PC <= nrow(out$eigenvalue$data)) |>
+  rename(
+    SNP_ID = column,
+    loading = value
+  )
+out$loading$data
+```
+
+OSNP,  score, the location of the observation in PCA space.
+
+```{r}
+out$score$data <- 
+tidy(pr, matrix = "scores") |> 
+  filter(PC <= nrow(out$eigenvalue$data)) |>
+  rename(
+    Individual = row,
+    score = value
+  )
+
+out$score$data
+```
+
+Write out
+
+```{r}
+
+# Create the dir if not existed
+out |> 
+  walk(
+    # ~ if(! file_exists(path_dir(.x$path))) print(.x$path)
+    ~ if(! file_exists(path_dir(.x$path))) dir_create(path_dir(.x$path))
+  )
+
+# Write out
+out |> 
+  walk(
+    ~ write_csv(.x$data, .x$path)
+  )
+
+```
+
+
+############################################################################
+## Function preparation Step 3
+## for loop
+############################################################################
+
+Top level variables
+
+```{r}
+out_dir <- "tmpout"
+gene_bed_dir <- fs::path_package("PLEIOVAR", "extdata", "gene")
+freq_cut <-  0.005
+VARCUT <- 2 * freq_cut * (1 - freq_cut)
+OPF_snp <- 0.75
+
+```
+
+
+```{r}
+###########################
+## Loop over chrom
+###########################
+# Loop over chrom
+# gene_bed_dir has gene_bed_files named by "chrom_i.bed"
+# for (chrom in dir_ls(out_dir, glob = "*chrom_*")) {
+for (gene_bed_file in dir_ls(gene_bed_dir, glob = "*chrom_*")) {
+  chrom <- str_extract(gene_bed_file, "chrom_\\d+")
+  assembled_dir <- path(out_dir, chrom, "rds")
+  pc_snp_dir <- path(out_dir, chrom, "pc_snp")
+  print(gene_bed_file)
+  print(chrom)
+  print(assembled_dir)
+  gene_bed <- 
+    readr::read_delim(gene_bed_file, col_names = FALSE, show_col_types=FALSE) %>%  # Read in
+    rlang::set_names(c("chr", "start", "end", "gene")) |>                          # Set column name
+    filter(file_exists(path(assembled_dir, gene, ext = "rds")))   # Only keep the genes that has correspoding assembled file
+  
+  ###########################
+  ## Loop over gene
+  ###########################
+  for (gene in gene_bed$gene){
+    # Initialize the out list
+    out <- list()
+    out$eigenvalue$path <- path(pc_snp_dir, "eigenvalue", gene)
+    out$loading$path <- path(pc_snp_dir, "loading", gene)
+    out$score$path <- path(pc_snp_dir, "score", gene)
+    print(gene)
+    print(out)
+    # Read in genotype data (X), filter by variance
+    X_varcut <-
+      readr::read_rds(path(assembled_dir, gene, ext = "rds")) |>   # Read in genotype for a gene
+      mutate(id = 1:n()) |>                              # Fill id column, the original values are all NA-- need to check
+      column_to_rownames(var = "id") |>                # Turn "id" column to row name
+      select(where( ~ var(.x) > VARCUT)) |>                 # Select by variance
+      as_tibble()
+    
+    # Whether the gene has > 1 variants
+    if (ncol(X_varcut) > 1){
+      # run PCA
+      pr <- 
+        X_varcut |>           # A data frame
+        as.matrix() |>        # Convert to matrix
+        jitter() |>           # Add noise
+        prcomp()              # Run PCA
+      # Eigenevalues, corresponding to lambda and OFPcum_s in Osorio's code.
+      out$eigenvalue$data <- 
+        tidy(pr, matrix = "eigenvalues") |> 
+        # Simply filter by cumulative <= OPF_snp seems not ok since according to Osorio's code
+        # the one row with smallest cumulative value larger than OPF_snp is kept.
+        filter(lag(cumulative <= OPF_snp, default = TRUE)) |> 
+        mutate(lambda = std.dev^2)
+      # Loading, rotation, eigenvector
+      out$loading$data <-
+        tidy(pr, matrix = "rotation") |>
+        filter(PC <= nrow(out$eigenvalue$data)) |>
+        rename(
+          SNP_ID = column,
+          loading = value
+        )
+      # OSNP,  score, the location of the observation in PCA space
+      out$score$data <- 
+        tidy(pr, matrix = "scores") |> 
+        filter(PC <= nrow(out$eigenvalue$data)) |>
+        rename(
+          Individual = row,
+          score = value
+        )
+      
+      
+    } else if (ncol(X_varcut) == 1) {
+          #if there was only a single SNP, then the PC-SNP is the SNP itself and lambda and the loadings is equal to 1 -#
+        out$eigenvalue$data <- tibble(PC = 1,std.dev = sd(X_varcut[[1]]),percent = 1,cumulative = 1,lambda = var(X_varcut[[1]]))
+        out$loading$data <- tibble(SNP_ID = colnames(X_varcut), PC = 1, loading=1)
+        out$score$data <- X_varcut
+    }
+    
+    ###############################################################
+    ## Write out
+    ###############################################################
+    if (ncol(X_varcut) >= 1) {
+      # Create the dir if not existed
+      out |>
+        walk(~ if (!file_exists(path_dir(.x$path)))
+          dir_create(path_dir(.x$path)))
+      
+      # Write out
+      out |>
+        walk(~ write_csv(.x$data, .x$path))
+    }
+
+    
+  }  # Closing gene loop 
+  
+
+  
+}  # Closing chrom loop 
+
+```
+
+
+
+############################################################################
+## Function preparation Step 4
+## tidy
+############################################################################
+
+Top level variables
+
+```{r}
+out_dir <- "tmpout"
+gene_bed_dir <- fs::path_package("PLEIOVAR", "extdata", "gene")
+freq_cut <-  0.005
+VARCUT <- 2 * freq_cut * (1 - freq_cut)
+OPF_snp <- 0.75
+
+```
+
+One gene
+
+```{r}
+pc_snp_one_gene <- function(
+  gene = "gene_20_2",
+  assembled_dir = "tmpout/chrom_20/rds",
+  pc_snp_dir ="tmpout/chrom_20/pc_snp",
+  freq_cut =  0.005,
+  OPF_snp = 0.75
+){
+  
+  ########
+  # Some cut off values
+  VARCUT <- 2 * freq_cut * (1 - freq_cut)
+  ########
+  # Initialize the out list
+  out <- list()
+  out$eigenvalue$path <- path(pc_snp_dir, "eigenvalue", gene)
+  out$loading$path <- path(pc_snp_dir, "loading", gene)
+  out$score$path <- path(pc_snp_dir, "pc_snp_score", gene)
+  print(gene)
+  print(out)
+  ########
+  # Read in genotype data (X), filter by variance
+  X_varcut <-
+    readr::read_rds(path(assembled_dir, gene, ext = "rds")) |>   # Read in genotype for a gene
+    mutate(id = 1:n()) |>                              # Fill id column, the original values are all NA-- need to check
+    column_to_rownames(var = "id") |>                # Turn "id" column to row name
+    select(where( ~ var(.x) > VARCUT)) |>                 # Select by variance
+    as_tibble()
+  ########
+  # Run PCA and extract eigenvalue, loading, and pc_snp_score
+  # Whether the gene has > 1 variants
+  if (ncol(X_varcut) > 1){
+    # run PCA
+    pr <- 
+      X_varcut |>           # A data frame
+      as.matrix() |>        # Convert to matrix
+      jitter() |>           # Add noise
+      prcomp()              # Run PCA
+    # Eigenevalues, corresponding to lambda and OFPcum_s in Osorio's code.
+    out$eigenvalue$data <- 
+      broom::tidy(pr, matrix = "eigenvalues") |> 
+      # Simply filter by cumulative <= OPF_snp seems not ok since according to Osorio's code
+      # the one row with smallest cumulative value larger than OPF_snp is kept.
+      filter(lag(cumulative <= OPF_snp, default = TRUE)) |> 
+      mutate(lambda = std.dev^2)
+    # Loading, rotation, eigenvector
+    out$loading$data <-
+      broom::tidy(pr, matrix = "rotation") |>
+      filter(PC <= nrow(out$eigenvalue$data)) |>
+      rename(
+        SNP_ID = column,
+        loading = value
+      )
+    # OSNP,  score, the location of the observation in PCA space
+    out$score$data <- 
+      broom::tidy(pr, matrix = "scores") |> 
+      filter(PC <= nrow(out$eigenvalue$data)) |>
+      rename(
+        Individual = row,
+        score = value
+      )
+  } else if (ncol(X_varcut) == 1) {
+    #if there was only a single SNP, then the PC-SNP is the SNP itself and lambda and the loadings is equal to 1 -#
+    out$eigenvalue$data <- tibble(PC = 1,std.dev = sd(X_varcut[[1]]),percent = 1,cumulative = 1,lambda = var(X_varcut[[1]]))
+    out$loading$data <- tibble(SNP_ID = colnames(X_varcut), PC = 1, loading=1)
+    out$score$data <- X_varcut
+  }
+  ########
+  ## Write out
+  if (ncol(X_varcut) >= 1) {
+    # Create the dir if not existed
+    out |>
+      walk(~ if (!file_exists(path_dir(.x$path)))
+        dir_create(path_dir(.x$path)))
+    
+    # Write out
+    out |>
+      walk(~ write_csv(.x$data, .x$path))
+  }
+  
+     
+}
+
+```
+
+Test one gene
+
+```{r}
+out_dir <- "tmpout"
+gene_bed_dir <- fs::path_package("PLEIOVAR", "extdata", "gene")
+freq_cut <-  0.005
+VARCUT <- 2 * freq_cut * (1 - freq_cut)
+OPF_snp <- 0.75
+
+pc_snp_one_gene(
+  gene = "gene_20_2",
+  assembled_dir = "tmpout/chrom_20/rds",
+  pc_snp_dir ="tmpout/chrom_20/pc_snp",
+  freq_cut =  0.005,
+  OPF_snp = 0.75)
+
+```
+
+
+
+One chrom
+
+```{r}
+
+pc_snp_one_chrom <- function(
+  gene_bed_file = fs::path_package("PLEIOVAR", "extdata", "gene", "chrom_20.bed"),
+  out_dir = "tmpout"
+){
+  
+  chrom <- str_extract(gene_bed_file, "chrom_\\d+")
+  assembled_dir <- path(out_dir, chrom, "rds")
+  pc_snp_dir <- path(out_dir, chrom, "pc_snp")
+  # print(gene_bed_file)
+  # print(chrom)
+  # print(assembled_dir)
+  # Read in gene bed
+  gene_bed <- 
+    readr::read_delim(gene_bed_file, col_names = FALSE, show_col_types=FALSE) %>%  # Read in
+    rlang::set_names(c("chr", "start", "end", "gene")) |>                          # Set column name
+    filter(file_exists(path(assembled_dir, gene, ext = "rds")))   # Only keep the genes that has correspoding assembled file
+  # Parallelly processing
+  gene_bed$gene |> 
+    furrr::future_walk(
+      pc_snp_one_gene,
+      assembled_dir,
+      pc_snp_dir,
+      .options = furrr_options(seed = TRUE)
+    )
+}
+
+```
+
+Test for one chrom
+
+```{r}
+# Process one chrom
+tic("One chrom")
+gene_bed_file <-  fs::path_package("PLEIOVAR", "extdata", "gene", "chrom_22.bed")
+out_dir <-  "tmpout"
+plan(multisession, workers = 12)
+pc_snp_one_chrom(gene_bed_file, out_dir)
+plan(sequential)
+toc()
+```
+
+Test for multiple chroms
+
+```{r}
+# Process multiple chroms
+tic("Multiple chroms")
+gene_bed_dir <-  fs::path_package("PLEIOVAR", "extdata", "gene")
+out_dir <-  "tmpout"
+plan(multisession, workers = 12)
+dir_ls(gene_bed_dir, regexp = ".*chrom_[1-9].*") |>
+   walk(function(gene_bed_file) {
+     tic(gene_bed_file)
+     pc_snp_one_chrom(gene_bed_file, out_dir)
+     toc()
+    })
+plan(sequential)
+toc()
+
+```
+

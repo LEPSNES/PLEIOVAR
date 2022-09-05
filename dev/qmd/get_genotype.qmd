@@ -1,0 +1,325 @@
+---
+title: "Get genewise genotype from vcf files via vcftools"
+toc: true
+number-sections: true
+highlight-style: pygments
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: load-pkgs
+#| code-summary: "Packages"
+#| message: false
+
+pacman::p_load(tidyverse, fs, furrr,  tictoc, broom, devtools)
+
+```
+
+
+Parameters
+
+```{r}
+vcf_dir=fs::path_package("PLEIOVAR", "extdata", "vcf")
+gene_dir=fs::path_package("PLEIOVAR", "extdata", "gene")
+out_dir="result"
+job_num=30
+extension=50000
+```
+
+vcf files, 
+
+```{r}
+vcf_file <- 
+  vcf_dir |> 
+  dir_ls() |> 
+  map_chr(
+    ~str_extract(.x, "chr[om_]*\\d+")
+  ) |> 
+  enframe(value = "chrom", name = "vcf") |> 
+  mutate(
+    chrom = as.integer(str_extract(chrom, "\\d+"))
+  ) |> 
+  relocate(chrom)
+
+vcf_file
+```
+
+gene files
+
+```{r}
+# Store the extended gene bed file in a temp directory
+gene_extended_dir <- 
+  path_temp("gene_extended") |> 
+  dir_create()
+# Function to extent a gene bed file
+gene_bed_file <- path(gene_dir, "chrom_20.bed")
+# extension <- 50000
+extend_gene_bed <- function(gene_bed_file, gene_extended_dir, extension){
+  gene_bed_extended <- path(gene_extended_dir, path_file(gene_bed_file))
+  readr::read_delim(gene_bed_file, 
+                    col_names = c("chrom", "start", "end", "gene"),
+                    show_col_types = FALSE) |> 
+    mutate(
+      start = start - extension,
+      end = end + extension
+    ) |> 
+    write_delim(
+      file = gene_bed_extended,
+      col_names = FALSE
+    )
+  
+  return(gene_bed_extended)
+}
+
+# Test function
+extend_gene_bed(gene_bed_file, gene_extended_dir, extension)
+```
+
+
+```{r}
+gene_file <- 
+  gene_dir |> 
+  dir_ls() |> 
+  map_chr(                                     # Extract chrom
+    ~str_extract(.x, "chr[om_]*\\d+")
+  ) |> 
+  enframe(value = "chrom", name = "gene") |>   # Convert to tibble
+  mutate(
+    chrom = as.integer(str_extract(chrom, "\\d+"))  # Convert chrom to integer
+  ) |> 
+  rowwise() |> 
+  mutate(
+    gene_extended =  extend_gene_bed(
+      gene_bed_file = gene,
+      gene_extended_dir,
+      extension 
+    )
+  ) |> 
+  relocate(chrom)
+
+glimpse(gene_file)
+```
+
+Joint vcf and gene together
+
+```{r}
+vcf_gene <- 
+  full_join(vcf_file, gene_file, by="chrom") |> 
+  mutate(
+    out_dir_by_chrom = dir_create(path(out_dir, str_c("chrom_", chrom), "vcftools_output"))
+  )
+
+vcf_gene
+```
+
+Get out_dir
+
+```{r}
+vcf_gene |> 
+  mutate(
+    out_dir_by_chrom = dir_create(path(out_dir, str_c("chrom_", chrom), "vcftools_output"))
+    # dir_create(out_dir_by_chrom)
+  ) |> 
+  # rowwise() |> 
+    glimpse()
+```
+
+
+```{r}
+# Locate of shell script
+shell_script <-  fs::path_package("PLEIOVAR", "shellscript", "get_genewise_genotype_via_vcftools.sh")
+# File to store shell script output from stdout (fd1)
+pullvar_log = "pull_variants.log"
+# File to store vcftools output from stderr (fd2)
+vcftools_log = "vcftools.log"
+job_num <- 30
+```
+
+
+```{r}
+vcf_gene |>
+  pwalk(function(chrom, vcf, gene, out_dir_by_chrom) {
+    write_lines(
+      str_c("start chrom", chrom, ": ", Sys.time()),
+      file = str_c(out_dir, "/", pullvar_log),
+      append = TRUE
+    )
+    system2(
+      command = "zsh",
+      args = c(
+        shell_script,
+        vcf,
+        gene,
+        out_dir_by_chrom,
+        job_num,
+        stringr::str_c("1>>", out_dir, "/", pullvar_log),
+        stringr::str_c("2>>", out_dir, "/", vcftools_log)
+      ),
+      wait = TRUE
+    )
+  })
+
+  
+```
+
+
+############################################################################
+## Function preparation Step 2
+############################################################################
+
+
+Parameters
+
+```{r}
+vcf_dir=fs::path_package("PLEIOVAR", "extdata", "vcf")
+gene_dir=fs::path_package("PLEIOVAR", "extdata", "gene")
+out_dir="result"
+job_num=30
+extension=50000
+# Locate of shell script
+shell_script <-  fs::path_package("PLEIOVAR", "shellscript", "get_genewise_genotype_via_vcftools.sh")
+# File to store shell script output from stdout (fd1)
+pullvar_log = "pull_variants.log"
+# File to store vcftools output from stderr (fd2)
+vcftools_log = "vcftools.log"
+```
+
+Gene extending function
+
+```{r}
+########
+# Define function
+########
+extend_gene_bed <- function(gene_bed_file, gene_extended_dir, extension){
+  gene_bed_extended <- path(gene_extended_dir, path_file(gene_bed_file))
+  readr::read_delim(gene_bed_file, 
+                    col_names = c("chrom", "start", "end", "gene"),
+                    show_col_types = FALSE) |> 
+    mutate(
+      start = start - extension,
+      end = end + extension
+    ) |> 
+    write_tsv(
+      file = gene_bed_extended,
+      col_names = FALSE
+    )
+  
+  return(gene_bed_extended)
+}
+########
+# Test function
+########
+# Store the extended gene bed file in a temp directory
+gene_extended_dir <- 
+  path_temp("gene_extended") |> 
+  dir_create()
+# Function to extent a gene bed file
+gene_bed_file <- path(gene_dir, "chrom_20.bed")
+extension <- 50000
+
+extend_gene_bed(gene_bed_file, gene_extended_dir, extension)
+```
+
+
+
+```{r}
+get_genewise_genotype_via_vcftools <- function(
+    vcf_dir=fs::path_package("PLEIOVAR", "extdata", "vcf"),
+    gene_dir=fs::path_package("PLEIOVAR", "extdata", "gene"),
+    out_dir="result",
+    job_num=30,
+    extension=50000,
+    # Locate of shell script
+    shell_script =  fs::path_package("PLEIOVAR", "shellscript", "get_genewise_genotype_via_vcftools.sh"),
+    # File to store shell script output from stdout (fd1)
+    pullvar_log = "pull_variants.log",
+    # File to store vcftools output from stderr (fd2)
+    vcftools_log = "vcftools.log"
+){
+  # vcf_files is a tiblle with two cols, chrom and vcf file path
+  vcf_files <- 
+    dir_ls(vcf_dir) |>                        # Get vcf file path
+    map_chr(
+      ~str_extract(.x, "chr[om_]*\\d+")       # A named char vector
+    ) |> 
+    enframe(value = "chrom", name = "vcf") |> # A tibble
+    mutate(
+      chrom = as.integer(str_extract(chrom, "\\d+")) # Convert chrom to integer
+    ) |> 
+    relocate(chrom)
+  # gene_files is a tibble with three cols, chrom, gene, and gene_extended
+  gene_files <-
+    dir_ls(gene_dir) |> 
+    map_chr(                                     # Extract chrom
+      ~str_extract(.x, "chr[om_]*\\d+")
+    ) |> 
+    enframe(value = "chrom", name = "gene") |>   # Convert to tibble
+    mutate(
+      chrom = as.integer(str_extract(chrom, "\\d+"))  # Convert chrom to integer
+    ) |> 
+    rowwise() |> 
+    mutate(                                     # Extend gene range by extension
+      gene_extended =  extend_gene_bed(         # Store in the temp dir
+        gene_bed_file = gene,
+        gene_extended_dir,
+        extension 
+      )
+    ) |> 
+    relocate(chrom)
+  # vcf_gene tible includes vcf, gene, and out_dir_by_chrom paths
+  vcf_gene <- 
+    full_join(vcf_files, gene_files, by="chrom") |> 
+    mutate(
+      out_dir_by_chrom = dir_create(path(out_dir, str_c("chrom_", chrom), "vcftools_output"))
+    )
+  # Pull genewise genotype via shell script
+  vcf_gene |>
+    pwalk(function(chrom, vcf, gene, gene_extended, out_dir_by_chrom) {
+      # Log starting time
+      write_lines(
+        str_c("start chrom", chrom, ": ", Sys.time()),
+        file = str_c(out_dir, "/", pullvar_log),
+        append = TRUE
+      )
+      # Call shell script
+      system2(
+        command = "zsh",
+        args = c(
+          shell_script,
+          vcf,
+          gene_extended,
+          out_dir_by_chrom,
+          job_num,
+          stringr::str_c("1>>", out_dir, "/", pullvar_log),
+          stringr::str_c("2>>", out_dir, "/", vcftools_log)
+        ),
+        wait = TRUE
+      )
+    } # Close function definition
+    ) # Close pwalk
+  
+  
+  
+}
+```
+
+Test the function
+
+```{r}
+get_genewise_genotype_via_vcftools(
+    vcf_dir=fs::path_package("PLEIOVAR", "extdata", "vcf"),
+    gene_dir=fs::path_package("PLEIOVAR", "extdata", "gene"),
+    out_dir="result",
+    job_num=30,
+    extension=50000,
+    shell_script =  fs::path_package("PLEIOVAR", "shellscript", "get_genewise_genotype_via_vcftools.sh"),
+    pullvar_log = "pull_variants.log",
+    vcftools_log = "vcftools.log"
+)
+```
+

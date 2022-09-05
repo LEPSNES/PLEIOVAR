@@ -2,8 +2,8 @@
 
 export("%>%")
 export(cycle_through_genes_one_chrom)
-export(hello)
-export(pc_snp)
-export(str_split_one)
+export(get_genewise_genotype_via_vcftools)
+export(pc_snp_one_chrom)
+export(pc_snp_one_gene)
 export(unite_three_vcf_output_files_of_one_gene)
 importFrom(magrittr,"%>%")
