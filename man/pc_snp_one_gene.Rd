@@ -6,8 +6,8 @@
 \usage{
 pc_snp_one_gene(
   gene = "gene_20_2",
-  assembled_dir = "tmpout/chrom_20/rds",
-  pc_snp_dir = "tmpout/chrom_20/pc_snp",
+  assembled_dir = "result/chrom_20/assembled_file",
+  pc_snp_dir = "result/chrom_20/pc_snp",
   freq_cut = 0.005,
   OPF_snp = 0.75
 )
@@ -35,8 +35,8 @@ pc_snp_dir.
 
 pc_snp_one_gene(
   gene = "gene_20_2",
-  assembled_dir = "tmpout/chrom_20/rds",
-  pc_snp_dir ="tmpout/chrom_20/pc_snp",
+  assembled_dir = "result/chrom_20/assembled_file",
+  pc_snp_dir ="result/chrom_20/pc_snp",
   freq_cut =  0.005,
   OPF_snp = 0.75)
 

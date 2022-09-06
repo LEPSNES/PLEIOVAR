@@ -6,7 +6,7 @@
 \usage{
 pc_snp_one_chrom(
   gene_bed_file = fs::path_package("PLEIOVAR", "extdata", "gene", "chrom_20.bed"),
-  out_dir = "tmpout"
+  out_dir = "result"
 )
 }
 \arguments{
@@ -26,8 +26,8 @@ out_dir/chrom/gene_name.rds, and paralelly generate pc snps for all the genes us
 # Process one chrom
 # Set up workers. Parallel framework, future, is called internally via furrr
 tic("One chrom")
-gene_bed_file <-  fs::path_package("PLEIOVAR", "extdata", "gene", "chrom_22.bed")
-out_dir <-  "tmpout"
+gene_bed_file <-  fs::path_package("PLEIOVAR", "extdata", "gene", "chrom_20.bed")
+out_dir <-  "result"
 plan(multisession, workers = 12)
 pc_snp_one_chrom(gene_bed_file, out_dir)
 plan(sequential)
@@ -37,7 +37,7 @@ toc()
 # Set up workers. But use function walk(), not future_walk(), to avoid double paralleling at both chrom and gene levels.
 tic("Multiple chroms")
 gene_bed_dir <-  fs::path_package("PLEIOVAR", "extdata", "gene")
-out_dir <-  "tmpout"
+out_dir <-  "result"
 plan(multisession, workers = 12)
 dir_ls(gene_bed_dir, regexp = ".*chrom_[1-9].*") |>
   walk(function(gene_bed_file) {

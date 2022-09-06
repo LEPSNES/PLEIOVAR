@@ -266,7 +266,7 @@ get_genewise_genotype_via_vcftools <- function(
     mutate(                                     # Extend gene range by extension
       gene_extended =  extend_gene_bed(         # Store in the temp dir
         gene_bed_file = gene,
-        gene_extended_dir,
+        gene_extended_dir = dir_create(path_temp("gene_extended")),
         extension 
       )
     ) |> 

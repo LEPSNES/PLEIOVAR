@@ -22,16 +22,16 @@
 #'
 #' pc_snp_one_gene(
 #'   gene = "gene_20_2",
-#'   assembled_dir = "tmpout/chrom_20/rds",
-#'   pc_snp_dir ="tmpout/chrom_20/pc_snp",
+#'   assembled_dir = "result/chrom_20/assembled_file",
+#'   pc_snp_dir ="result/chrom_20/pc_snp",
 #'   freq_cut =  0.005,
 #'   OPF_snp = 0.75)
 #'
 #'
 pc_snp_one_gene <- function(
     gene = "gene_20_2",
-    assembled_dir = "tmpout/chrom_20/rds",
-    pc_snp_dir ="tmpout/chrom_20/pc_snp",
+    assembled_dir = "result/chrom_20/assembled_file",
+    pc_snp_dir ="result/chrom_20/pc_snp",
     freq_cut =  0.005,
     OPF_snp = 0.75
 ){
@@ -49,10 +49,11 @@ pc_snp_one_gene <- function(
   # Read in genotype data (X), filter by variance
   X_varcut <-
     readr::read_rds(path(assembled_dir, gene, ext = "rds")) |>   # Read in genotype for a gene
-    dplyr::mutate(id = 1:n()) |>                              # Fill id column, the original values are all NA-- need to check
+    # dplyr::mutate(id = 1:n()) |>                              # Fill id column, the original values are all NA-- need to check
+    dplyr::mutate(id = make.unique(id, sep = "_")) |>           # Unique id if it is not
     tibble::column_to_rownames(var = "id") |>                # Turn "id" column to row name
     dplyr::select(where( ~ var(.x) > VARCUT)) |>                 # Select by variance
-    tibble::as_tibble()
+    tibble::as_tibble(rownames = NA)
   ########
   # Run PCA and extract eigenvalue, loading, and pc_snp_score
   # Whether the gene has > 1 variants
