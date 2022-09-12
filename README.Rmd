@@ -41,6 +41,7 @@ library(PLEIOVAR)
 library(fs)
 library(furrr)
 library(tictoc)
+library(tidyverse)
 # Example vcf files
 path_package("PLEIOVAR", "extdata", "vcf") |> 
   dir_ls()
@@ -81,7 +82,7 @@ The `rds` files are saved into *assembled_file* directory alongside *vcftools_ou
 ```{r}
 # Process one chrom
 tic("One tst chrom")
-d <- "result/chrom_20/vcftools_output"
+d <- "/home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_20/vcftools_output"
 plan(multisession, workers = 12)
 unite_vcftools_output_one_chrom(
   vcftools_output = d
@@ -92,10 +93,10 @@ toc()
 # Process multiple chroms
 # Set up workers. But use function walk(), not future_walk(), to avoid double paralleling at both chrom and gene levels.
 tic("Multiple chroms")
-assembled_dir <- "result"
+assembled_dir <- "/home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result"
 plan(multisession, workers = 72)
 dir_ls(assembled_dir, regexp = ".*chrom_[1-9].*") |>
-  path("vcf_output") |>
+path("vcftools_output") |>
     walk(function(chrom) {
       tic(chrom)
       unite_vcftools_output_one_chrom(chrom)
