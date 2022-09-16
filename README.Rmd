@@ -1,5 +1,8 @@
 ---
 output: github_document
+number_sections: TRUE
+toc: TRUE
+code_download: TRUE
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -18,7 +21,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of PLEIOVAR is to ...
+The goal of PLEIOVAR is to measure the joint association between a set of SNPs within each gene and a set of traits.  By using principal component analysis (PCA) on both traits and SNPs, we are able to perform the joint association (based on a chi-squared distribution) resulting in a fast and efficient estimation.  In addition, the application of PCA dimension reduction on PC-SNPs within a gene, sharply reduces the number of degrees of freedom, thereby lowering the multiple testing burden and revealing more candidate pleiotropic interactions.   In addition, the method can also be used to score a set of genes (perhaps within a pathway), providing a more scalable scoring method than most software applications which are mostly based on Fisher’s Exact Test, making the method suited to detect pleiotropic enriched pathways.
 
 ## Installation
 
@@ -34,14 +37,14 @@ devtools::install_github("LEPSNES/PLEIOVAR")
 PLEIOVAR needs to two directories, one includes the compressed vcf files and another includes gene bed file. The vcf files should be compressed, chromosome-separated, and include chrom information in the file names in the format "chr[om_]\\d+", such as CARDIAstudy_chr20.vcf.gz, or CARDIAstudy_chrom_20.vcf.gz. The gene bed files should include four columns, "chrom", "start", "end", "gene", but has no title row, saved with names like "chrom_i.bed". The vcf and gene files have to both exist to process a chromosome.
 
 
-PLEIOVAR comes with examplar vcf and gene files.
+PLEIOVAR comes with exemplar vcf and gene files.
 
 ```{r example}
 library(PLEIOVAR)
 library(fs)
 library(furrr)
 library(tictoc)
-library(tidyverse)
+library(tidyverse, quietly = TRUE)
 # Example vcf files
 path_package("PLEIOVAR", "extdata", "vcf") |> 
   dir_ls()
@@ -54,9 +57,9 @@ path_package("PLEIOVAR", "extdata", "gene") |>
 
 ### Genewise genotype
 
-The chromosome level vcf file includes genotype for all the SNP positions detected in a study. This step extracts the genotypes for every gene based on the gene start and end positions defined in the bed file. The function, `get_genewise_genotype()`, aligns the vcf and gene files by chromosome and then call a shell script, which parallellize [`vcftools`](https://vcftools.github.io/man_latest.html)  using [`GNU parallel`](https://www.gnu.org/software/parallel/) utility. 
+The chromosome level vcf file includes genotype for all the SNP positions detected in a study. This step extracts the genotypes for every gene based on the gene start and end positions defined in the bed file. The function, `get_genewise_genotype()`, aligns the vcf and gene files by chromosome and then call a shell script, which parallellize [`vcftools`](https://vcftools.github.io/man_latest.html)  using [`GNU parallel`](https://www.gnu.org/software/parallel/) utility, to do the genotype extraction. 
 
-The outputs are saved into vcftools_out and organized by chromosome like out_dir/chrom_i/vcftools_output.
+The outputs are saved into *vcftools_out* and organized by chromosome like *out_dir/chrom_i/vcftools_output*.
 
 ```{r cars}
 # Get the dir path
@@ -75,7 +78,7 @@ get_genewise_genotype(vcf_dir, gene_dir, out_dir, job_num, extension)
 
 `vcftools` generates three files for one gene, gene.012 including individual x SNP genotype matrix, gene.012.indv including individual IDs, and gene.012.pos including SNP positions. This steps unite the three files into one [`tibble`](https://tibble.tidyverse.org/) and save as `rds`. 
 
-The function, `unite_vcftools_output_one_chrom()`, takes as input the directory holding vcftools outputs, and generates as outputs the united `rds` files. It is internally parallized via [`furrr`](https://furrr.futureverse.org/) package which utilize [`future`](https://future.futureverse.org/) framework. 
+The function, `unite_vcftools_output_one_chrom()`, takes as input the directory holding vcftools outputs, and generates as outputs the united `rds` files. It is internally parallized via [`furrr`](https://furrr.futureverse.org/) package which makes use of [`future`](https://future.futureverse.org/) framework. 
 
 The `rds` files are saved into *assembled_file* directory alongside *vcftools_output*. 
 
@@ -110,7 +113,7 @@ toc()
 
 ### PC_SNP
 
-One of the advantages PLEIOVAR carries is using the independent genotypes of a gene to conduct genome-wide association study (GWAS), which is achieved by project the genotype information from the original space to principal components space. The function, `pc_snp_one_chrom()`, runs principal component analysis (PCA), by calling `prcomp()`, and save the eigenvalues, sometimes called lambda, into *eigenvalue* directory, loading, sometimes called rotation, into *loading* directory, and score, i.e., the rotated data, into *pc_snp_score* directory. All these three directories are under *pc_snp*, which is alongside with *vcftools_output* and *assembled_file*. 
+One of the advantages PLEIOVAR bears is using the independent genotypes of a gene to conduct genome-wide association study (GWAS), which is achieved by project the genotype information from the original space to principal components space. The function, `pc_snp_one_chrom()`, runs principal component analysis (PCA), by calling `prcomp()`, and save the eigenvalues, sometimes called lambda, into *eigenvalue* directory, loading, sometimes called rotation, into *loading* directory, and score, i.e., the rotated data, into *pc_snp_score* directory. All these three directories are under *pc_snp*, which is alongside with *vcftools_output* and *assembled_file*. 
 
 
 ```{r}

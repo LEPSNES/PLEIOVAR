@@ -1,4 +1,6 @@
 
+true
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # PLEIOVAR
@@ -6,7 +8,18 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of PLEIOVAR is to …
+The goal of PLEIOVAR is to measure the joint association between a set
+of SNPs within each gene and a set of traits. By using principal
+component analysis (PCA) on both traits and SNPs, we are able to perform
+the joint association (based on a chi-squared distribution) resulting in
+a fast and efficient estimation. In addition, the application of PCA
+dimension reduction on PC-SNPs within a gene, sharply reduces the number
+of degrees of freedom, thereby lowering the multiple testing burden and
+revealing more candidate pleiotropic interactions. In addition, the
+method can also be used to score a set of genes (perhaps within a
+pathway), providing a more scalable scoring method than most software
+applications which are mostly based on Fisher’s Exact Test, making the
+method suited to detect pleiotropic enriched pathways.
 
 ## Installation
 
@@ -29,7 +42,7 @@ columns, “chrom”, “start”, “end”, “gene”, but has no title row, 
 with names like “chrom_i.bed”. The vcf and gene files have to both exist
 to process a chromosome.
 
-PLEIOVAR comes with examplar vcf and gene files.
+PLEIOVAR comes with exemplar vcf and gene files.
 
 ``` r
 library(PLEIOVAR)
@@ -37,7 +50,7 @@ library(fs)
 library(furrr)
 #> Loading required package: future
 library(tictoc)
-library(tidyverse)
+library(tidyverse, quietly = TRUE)
 #> ── Attaching packages
 #> ───────────────────────────────────────
 #> tidyverse 1.3.2 ──
@@ -51,15 +64,15 @@ library(tidyverse)
 # Example vcf files
 path_package("PLEIOVAR", "extdata", "vcf") |> 
   dir_ls()
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
 # Example gene files
 path_package("PLEIOVAR", "extdata", "gene") |> 
   dir_ls()
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/gene/chrom_20.bed
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/gene/chrom_21.bed
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/gene/chrom_22.bed
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_20.bed
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_21.bed
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_22.bed
 ```
 
 ## Workflow
@@ -72,10 +85,11 @@ every gene based on the gene start and end positions defined in the bed
 file. The function, `get_genewise_genotype()`, aligns the vcf and gene
 files by chromosome and then call a shell script, which parallellize
 [`vcftools`](https://vcftools.github.io/man_latest.html) using
-[`GNU parallel`](https://www.gnu.org/software/parallel/) utility.
+[`GNU parallel`](https://www.gnu.org/software/parallel/) utility, to do
+the genotype extraction.
 
-The outputs are saved into vcftools_out and organized by chromosome like
-out_dir/chrom_i/vcftools_output.
+The outputs are saved into *vcftools_out* and organized by chromosome
+like *out_dir/chrom_i/vcftools_output*.
 
 ``` r
 # Get the dir path
@@ -103,7 +117,7 @@ as `rds`.
 The function, `unite_vcftools_output_one_chrom()`, takes as input the
 directory holding vcftools outputs, and generates as outputs the united
 `rds` files. It is internally parallized via
-[`furrr`](https://furrr.futureverse.org/) package which utilize
+[`furrr`](https://furrr.futureverse.org/) package which makes use of
 [`future`](https://future.futureverse.org/) framework.
 
 The `rds` files are saved into *assembled_file* directory alongside
@@ -119,7 +133,7 @@ unite_vcftools_output_one_chrom(
 )
 plan(sequential)
 toc()
-#> One tst chrom: 29.817 sec elapsed
+#> One tst chrom: 31.441 sec elapsed
 
 # Process multiple chroms
 # Set up workers. But use function walk(), not future_walk(), to avoid double paralleling at both chrom and gene levels.
@@ -133,23 +147,23 @@ path("vcftools_output") |>
       unite_vcftools_output_one_chrom(chrom)
       toc()
      })
-#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_20/vcftools_output: 24.284 sec elapsed
-#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_21/vcftools_output: 1.276 sec elapsed
-#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_22/vcftools_output: 5.896 sec elapsed
+#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_20/vcftools_output: 25.924 sec elapsed
+#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_21/vcftools_output: 1.277 sec elapsed
+#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_22/vcftools_output: 5.91 sec elapsed
 
 plan(sequential)
 toc()
-#> Multiple chroms: 33.317 sec elapsed
+#> Multiple chroms: 40.743 sec elapsed
 ```
 
 ### PC_SNP
 
-One of the advantages PLEIOVAR carries is using the independent
-genotypes of a gene to conduct genome-wide association study (GWAS),
-which is achieved by project the genotype information from the original
-space to principal components space. The function, `pc_snp_one_chrom()`,
-runs principal component analysis (PCA), by calling `prcomp()`, and save
-the eigenvalues, sometimes called lambda, into *eigenvalue* directory,
+One of the advantages PLEIOVAR bears is using the independent genotypes
+of a gene to conduct genome-wide association study (GWAS), which is
+achieved by project the genotype information from the original space to
+principal components space. The function, `pc_snp_one_chrom()`, runs
+principal component analysis (PCA), by calling `prcomp()`, and save the
+eigenvalues, sometimes called lambda, into *eigenvalue* directory,
 loading, sometimes called rotation, into *loading* directory, and score,
 i.e., the rotated data, into *pc_snp_score* directory. All these three
 directories are under *pc_snp*, which is alongside with
@@ -165,7 +179,7 @@ plan(multisession, workers = 12)
 pc_snp_one_chrom(gene_bed_file, out_dir)
 plan(sequential)
 toc()
-#> One chrom: 12.847 sec elapsed
+#> One chrom: 16.454 sec elapsed
 
 # Process multiple chroms
 # Set up workers. But use function walk(), not future_walk(), to avoid double paralleling at both chrom and gene levels.
@@ -179,10 +193,10 @@ dir_ls(gene_bed_dir, regexp = ".*chrom_[1-9].*") |>
     pc_snp_one_chrom(gene_bed_file, out_dir)
     toc()
   })
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/gene/chrom_20.bed: 12.005 sec elapsed
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/gene/chrom_21.bed: 1.081 sec elapsed
-#> /tmp/Rtmpa9U5xU/temp_libpath27fb734f3da0a7/PLEIOVAR/extdata/gene/chrom_22.bed: 3.407 sec elapsed
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_20.bed: 10.736 sec elapsed
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_21.bed: 1.138 sec elapsed
+#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_22.bed: 3.557 sec elapsed
 plan(sequential)
 toc()
-#> Multiple chroms: 17.261 sec elapsed
+#> Multiple chroms: 16.208 sec elapsed
 ```
