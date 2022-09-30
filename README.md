@@ -64,15 +64,15 @@ library(tidyverse, quietly = TRUE)
 # Example vcf files
 path_package("PLEIOVAR", "extdata", "vcf") |> 
   dir_ls()
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
 # Example gene files
 path_package("PLEIOVAR", "extdata", "gene") |> 
   dir_ls()
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_20.bed
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_21.bed
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_22.bed
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/gene/chrom_20.bed
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/gene/chrom_21.bed
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/gene/chrom_22.bed
 ```
 
 ## Workflow
@@ -133,7 +133,7 @@ unite_vcftools_output_one_chrom(
 )
 plan(sequential)
 toc()
-#> One tst chrom: 31.441 sec elapsed
+#> One tst chrom: 29.265 sec elapsed
 
 # Process multiple chroms
 # Set up workers. But use function walk(), not future_walk(), to avoid double paralleling at both chrom and gene levels.
@@ -147,13 +147,13 @@ path("vcftools_output") |>
       unite_vcftools_output_one_chrom(chrom)
       toc()
      })
-#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_20/vcftools_output: 25.924 sec elapsed
-#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_21/vcftools_output: 1.277 sec elapsed
-#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_22/vcftools_output: 5.91 sec elapsed
+#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_20/vcftools_output: 25.603 sec elapsed
+#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_21/vcftools_output: 1.298 sec elapsed
+#> /home/liz30/project/PLEIOVAR/PLEIOVAR_rpkg/result/chrom_22/vcftools_output: 5.703 sec elapsed
 
 plan(sequential)
 toc()
-#> Multiple chroms: 40.743 sec elapsed
+#> Multiple chroms: 38.664 sec elapsed
 ```
 
 ### PC_SNP
@@ -179,7 +179,7 @@ plan(multisession, workers = 12)
 pc_snp_one_chrom(gene_bed_file, out_dir)
 plan(sequential)
 toc()
-#> One chrom: 16.454 sec elapsed
+#> One chrom: 12.852 sec elapsed
 
 # Process multiple chroms
 # Set up workers. But use function walk(), not future_walk(), to avoid double paralleling at both chrom and gene levels.
@@ -193,10 +193,30 @@ dir_ls(gene_bed_dir, regexp = ".*chrom_[1-9].*") |>
     pc_snp_one_chrom(gene_bed_file, out_dir)
     toc()
   })
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_20.bed: 10.736 sec elapsed
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_21.bed: 1.138 sec elapsed
-#> /tmp/Rtmpth0s2Z/temp_libpathad5b716e4b882/PLEIOVAR/extdata/gene/chrom_22.bed: 3.557 sec elapsed
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/gene/chrom_20.bed: 13.403 sec elapsed
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/gene/chrom_21.bed: 1.108 sec elapsed
+#> /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/gene/chrom_22.bed: 3.57 sec elapsed
 plan(sequential)
 toc()
-#> Multiple chroms: 16.208 sec elapsed
+#> Multiple chroms: 18.836 sec elapsed
 ```
+
+## NOTE
+
+The [Open Source Edition R studio
+server](https://www.rstudio.com/products/workbench/comparison/) has a
+limit of 4,096 for maximum open file descriptors, which causes an error
+`ulimit:21: value exceeds hard limit` as recorded in `vcftools.log`. The
+Professional Edition user can increase the limit by adding
+`max-open-files = 1048576` to the file `/etc/rstudio/profiles`. See
+`5.2 User and Group Profiles` in [Rstudio Server Administation
+Guide](https://docs.rstudio.com/ide/server-pro/1.0.153/index.html) for
+details. The limit can be checked at **Terminal** tab in a R session by
+`ulimit -n` for soft limit and `ulimit -Hn` for hard limit. One
+workaround is to run `R` in the terminal. Check the limit. If too small,
+increase it by `ulimit -n 1000000`. If failed, adding the following two
+lines to the file `/etc/security/limits.conf` – root privilege is
+required. Sign out and back in, the limit will be updated.
+
+    *                hard    nofile          1048576
+    *                soft    nofile          1048576

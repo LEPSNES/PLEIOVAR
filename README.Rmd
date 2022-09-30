@@ -3,6 +3,8 @@ output: github_document
 number_sections: TRUE
 toc: TRUE
 code_download: TRUE
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -143,9 +145,14 @@ plan(sequential)
 toc()
 ```
 
+## NOTE
 
+The [Open Source Edition R studio server](https://www.rstudio.com/products/workbench/comparison/) has a limit of 4,096 for maximum open file descriptors, which causes an error `ulimit:21: value exceeds hard limit` as recorded in `vcftools.log`. The Professional Edition user can increase the limit by adding `max-open-files = 1048576` to the file `/etc/rstudio/profiles`. See `5.2 User and Group Profiles` in [Rstudio Server Administation Guide](https://docs.rstudio.com/ide/server-pro/1.0.153/index.html) for details. The limit can be checked at **Terminal** tab in a R session by `ulimit -n` for soft limit and `ulimit -Hn` for hard limit. One workaround is to run `R` in the terminal.  Check the limit. If too small, increase it by `ulimit -n 1000000`.  If failed, adding the following two lines to the file `/etc/security/limits.conf` -- root privilege is required. Sign out and back in, the limit will be updated. 
 
-
+```
+*                hard    nofile          1048576
+*                soft    nofile          1048576
+```
 
 
 

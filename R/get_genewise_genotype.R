@@ -78,7 +78,7 @@ get_genewise_genotype <- function(
   vcf_gene <-
     dplyr::full_join(vcf_files, gene_files, by="chrom") |>
     dplyr::mutate(
-      out_dir_by_chrom = fs::dir_create(path(out_dir, stringr::str_c("chrom_", chrom), "vcftools_output"))
+      out_dir_by_chrom = fs::dir_create(fs::path(out_dir, stringr::str_c("chrom_", chrom), "vcftools_output"))
     )
   ### Run the shell script
   # Pull genewise genotype via shell script

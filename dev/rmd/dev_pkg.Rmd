@@ -101,4 +101,21 @@ usethis::use_data(x, mtcars, internal = TRUE)
 use_data_raw("pc_snp")
 ```
 
+Run one chrom.  
+
+```{r}
+library(PLEIOVAR)
+# Get the dir path
+vcf_dir <- "/data/test/vcf"
+gene_dir <- "/data/test/gene"
+out_dir <- "func_output/result_chrom22"
+job_num <- 70
+extension <- 50000
+# Pull variants from vcf files
+get_genewise_genotype(vcf_dir, gene_dir, out_dir, job_num, extension)
+```
+
+
+
+
 

@@ -1,5 +1,7 @@
 #!/usr/local/bin/zsh
 
+#/usr/bin/sh
+
 # The script accept three arguments: the dir of vcf files; the dir of gene files; the output dir.
 # The vcf dir should include zipped chrom-wise vcf file with naming format Sardinia.b37.ss2120.FAref.impv4.chr${i}.vcf.gz
 # The gene dir should include bed files with naming format chrom_${i}.bed
@@ -18,7 +20,9 @@ echo "gene file: ${gene_file}"
 echo "out dir: ${out_dir}"
 
 # Increase the number of open file descriptors, specific for each tty
-ulimit -n 30000
+#ulimit -n 10000
+#ulimit -n 4096
+#ulimit -n 262144
 
 
 # Run vcftools paralelly
