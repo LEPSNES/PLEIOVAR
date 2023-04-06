@@ -1,0 +1,123 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+
+```{r}
+# pheno_file <-  "inst/extdata/pheno/mainpheno.dat"
+pheno_file <-  "../../inst/extdata/pheno/mainpheno.dat"
+OPF_trait <-  0.99
+```
+
+
+```{r}
+pheno_data <- read_delim(pheno_file, show_col_types = FALSE)
+```
+
+Original
+
+```{r}
+     M <- mean(phenofile[,2])
+     S <- sd(phenofile[,2])
+     OTrait <- (phenofile[,2]-M)/S
+     loadings = "PC-Trait-1 1.00"
+     #write.table(loadings,"PC-Trait_loadings",row.names=FALSE,col.names=FALSE)
+     
+```
+
+New
+
+```{r}
+OTrail <- scale(pheno_data[,2])[,1]
+loadings = "PC-Trait-1 1.00"
+```
+
+
+```{r}
+scale(pheno_data[,2]) |> 
+  as_tibble()
+
+pheno_data[,1:2] |> 
+  modify_at(2, ~ scale(.x)[,1])
+
+```
+
+
+
+```{r}
+    #--- Generating PC-Traits ----------------####
+    prW <- prcomp(TRAITS);  OTrait <- prW$x; loadings <- prW$rotation
+    #----- write PC-Trait loadings to file ------#
+    write.table(loadings,"PC-Trait_loadings.txt")
+    #--- Get % variance from each PC-TRAIT  ---#
+    OPF_s <- apply(OTrait,2,var);
+    OPF_s <- OPF_s/sum(OPF_s);
+    #--- defining the vector of cummulative % variance for PC-TRAITS ---#
+    OPFcum_s <- matrix(0,1,ncolT); CUM <- 0;
+    for(i in 1:ncolT) {  CUM <- CUM + OPF_s[i]; OPFcum_s[i] <- CUM }
+    #----- select PC-traits that meet variance explained cutoff -----#
+    tflag <- 1*(OPFcum_s >= OPF_trait); select_trait <- min((1:ncolT)[tflag>0]); OTrait <- OTrait[,1:select_trait];
+    FLAG = 2
+```
+
+
+```{r}
+    # pr <-
+      X_varcut |>           # A data frame
+      as.matrix() |>        # Convert to matrix
+      jitter() |>           # Add noise
+      stats::prcomp()              # Run PCA
+
+# Run principal components
+prW <- 
+  # pheno_data[, -1] |> 
+  pheno_data |> 
+  column_to_rownames("ID") |> 
+  as.matrix() |> 
+  stats::prcomp() 
+# eigenvalues filtered by cumulative percentage >= the cutoff, OPF_trait
+eigenvalue <-
+  broom::tidy(prW, matrix = "eigenvalues") |>
+  # Simply filter by cumulative <= OPF_snp seems not ok since according to Osorio's code
+  # the one row with smallest cumulative value larger than OPF_snp is kept.
+  dplyr::filter(dplyr::lag(cumulative <= OPF_trait, n = 1L, default = TRUE)) |>
+  dplyr::mutate(lambda = std.dev ^ 2)
+# Loading, rotation, eigenvector
+loadings <-
+  broom::tidy(prW, matrix = "rotation") |>
+  dplyr::filter(PC <= nrow(eigenvalue)) |>
+  dplyr::rename(pheno = column,
+                loading = value)
+# OTrait,  score, the location of the observation in PCA space
+OTrait <-
+  broom::tidy(prW, matrix = "scores") |>
+  dplyr::filter(PC <= nrow(eigenvalue)) |>
+  dplyr::rename(Individual = row,
+                score = value) |>
+  mutate(score = round(score, digits = 2))
+
+```
+
+
+Test the function
+
+
+```{r}
+pheno_file = "../../inst/extdata/pheno/mainpheno.dat"
+pc_trait_dir ="../../result/pc_trait"
+OPF_trait = 0.99
+
+pc_trait(pheno_file = pheno_file, pc_trait_dir = pc_trait_dir, OPF_trait = OPF_trait)
+pc_trait(pheno_file, pc_trait_dir, OPF_trait)
+
+```
+

@@ -1,0 +1,66 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+
+
+```{r}
+
+1:6 |> 
+  keep(~ .x >3)
+  map(~if_else(.x>3, .x, NULL)) |> 
+  compact()
+  map_int(~return(.x))
+  map(~print(.x))
+
+```
+
+
+```{r}
+one_gn |> 
+  mutate(PC=str_c("PC_", PC)) |> 
+  pivot_wider(id_cols = Individual,
+              names_from = PC,
+              values_from = score) |> 
+  rename(ID=Individual)
+```
+
+
+Read the pc_snp_score, convert to wide format, and write out. 
+
+
+```{r}
+# Get the file path
+dir_ls("func_output/result/chrom_1/pc_snp/pc_snp_score") |> 
+  # Read in data
+  map(
+    read_csv, show_col_types = FALSE
+  ) |> 
+  # Keep the gene that has > 1 PC
+  keep(
+    ~ max(.x$PC) > 1
+  ) |>
+  # Convert to wide format
+  map(
+    ~ mutate(.x, PC=str_c("PC_", PC)) %>% 
+  pivot_wider(id_cols = Individual,
+              names_from = PC,
+              values_from = score) %>% 
+  rename(ID=Individual)
+  ) |> 
+  # Write out
+  iwalk(
+    ~ write_csv(.x, 
+                path("func_output/result/chrom_1/pc_snp/pc_snp_score_wide", path_file(.y)))
+  )
+```
+
+

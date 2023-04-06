@@ -22,3 +22,15 @@ start chrom22: 2022-09-30 12:24:14
 vcf file: /tmp/RtmpyoLrqo/temp_libpath3726b3534d40b2/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
 gene file: /tmp/RtmpugRmh1/gene_extended/chrom_22.bed
 out dir: result/chrom_22/vcftools_output
+start chrom20: 2023-03-21 16:27:57
+vcf file: /tmp/Rtmpv1BdOg/temp_libpath6be5967808301/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr20.vcf.gz
+gene file: /tmp/RtmpHLkRVj/gene_extended/chrom_20.bed
+out dir: result/chrom_20/vcftools_output
+start chrom21: 2023-03-21 16:27:58
+vcf file: /tmp/Rtmpv1BdOg/temp_libpath6be5967808301/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr21.vcf.gz
+gene file: /tmp/RtmpHLkRVj/gene_extended/chrom_21.bed
+out dir: result/chrom_21/vcftools_output
+start chrom22: 2023-03-21 16:27:58
+vcf file: /tmp/Rtmpv1BdOg/temp_libpath6be5967808301/PLEIOVAR/extdata/vcf/Sardinia.b37.ss2120.FAref.impv4.chr22.vcf.gz
+gene file: /tmp/RtmpHLkRVj/gene_extended/chrom_22.bed
+out dir: result/chrom_22/vcftools_output
